@@ -1,0 +1,16 @@
+{% for g in site.data.projects %}
+<h2>{{ g.title }}</h2>
+  {%- for c in g.cards %}
+{% include home/project-card.html c=c %}
+  {%- endfor %}
+  {%- for l in g.lists %}
+<div class="entry">
+  <h3>{{ l.title }}</h3>
+  <ul>
+    {%- for it in l.items %}
+    <li>{% if it.url %}<a href="{{ it.url }}">{{ it.name }}</a>{% else %}{{ it.name }}{% endif %}{% if it.desc %} — {% include md.html text=it.desc inline=1 %}{% endif %}</li>
+    {%- endfor %}
+  </ul>
+</div>
+  {%- endfor %}
+{% endfor %}

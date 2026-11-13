@@ -1,0 +1,35 @@
+# ============================================================
+# 教育经历（倒序）
+#   period / school / degree / detail（灰色小字，支持 Markdown）
+#   projects: 课题项目卡片列表（左图右文），字段同 projects.yml 中的 cards：
+#     name / url / subtitle / desc / items（要点列表）/ meta / media / pair / links
+# ============================================================
+
+- period: 2017.09 – 2019.07
+  school: 哈尔滨工业大学
+  degree: 硕士 · 机器人技术与系统国家重点实验室
+  projects:
+    - name: navbot
+      url: https://github.com/marooncn/navbot
+      subtitle: 基于 RGB 图像的端到端无地图导航
+      desc: 硕士课题。以单目 RGB 图像为视觉输入，基于深度强化学习实现端到端、无需地图的移动机器人导航，目标覆盖无地图导航的三个层次：高效记忆 → 从记忆到推理 → 更强的推理。
+      items:
+        - "**仿真基准**：基于 Gazebo 搭建不同复杂度的迷宫测试环境，提供 Gym 风格接口并支持 ROS。"
+        - "**VAE-based Planner**：先训练 VAE 压缩视觉观测（latent 32 维），再以隐变量、速度和目标为输入训练 PPO 策略；相比端到端基线样本效率显著提升，SPL 持平或更优，并在两个迷宫中找到最短路径。"
+        - "**从记忆到推理**：引入 Stacked LSTM 结构，提升在未见环境中的导航能力。"
+      media:
+        - { src: img/navbot-framework.png, caption: 无地图运动规划框架 }
+
+- period: 2013.09 – 2017.06
+  school: 同济大学
+  degree: 本科 · 机械电子（机器人）
+  projects:
+    - name: Plantbot
+      url: https://github.com/marooncn/plantbot
+      subtitle: 基于 ROS 的移动机器人平台
+      desc: 本科课题。设计并制作了一款基于 ROS 的差速驱动移动机器人，可实现 SLAM 与自主导航，面向工厂场景中的取送物、巡检等任务。
+      items:
+        - "**机械设计**：SolidWorks 三维建模，分层结构集成激光雷达、超声波传感器与计算单元。"
+        - "**软件系统**：底层电机控制与里程计，上层基于 ROS 实现遥控、避障、SLAM 与导航。"
+      media:
+        - { src: img/plantbot-real.jpg, caption: 实物 }

@@ -1,0 +1,17 @@
+{%- comment -%}
+  文章元信息：日期 | 阅读时长 | 作者
+  阅读时长 = 去标签后字符数 / chars_per_minute，向上取整
+  英文文章（front matter 写 lang: en）按单词数 / words_per_minute 估算
+{%- endcomment -%}
+{%- assign pm = include.post -%}
+{%- if pm.lang == 'en' -%}
+{%- assign wpm = site.blog.words_per_minute | default: 200 -%}
+{%- assign minutes = pm.content | strip_html | number_of_words | divided_by: wpm | plus: 1 -%}
+{%- else -%}
+{%- assign chars = pm.content | strip_html | strip_newlines | remove: ' ' | size -%}
+{%- assign minutes = chars | divided_by: site.blog.chars_per_minute | plus: 1 -%}
+{%- endif -%}
+<span title="{{ pm.date | date: '%Y-%m-%d' }}">{{ pm.date | date: '%B %-d, %Y' }}</span>
+{%- if pm.last_modified_at %}&nbsp;·&nbsp;<span>Updated {{ pm.last_modified_at | date: '%B %-d, %Y' }}</span>{% endif -%}
+&nbsp;·&nbsp;<span>{{ minutes }} min</span>
+{%- unless include.short %}&nbsp;·&nbsp;<span>{{ pm.author | default: site.author }}</span>{% endunless -%}

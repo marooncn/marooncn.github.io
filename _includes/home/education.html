@@ -1,0 +1,10 @@
+<h2 id="education">教育经历</h2>
+{%- for edu in site.data.education %}
+<section class="exp">
+  {%- capture t %}{{ edu.school }}{% if edu.degree %} · {{ edu.degree }}{% endif %}{% endcapture -%}
+  {%- include home/exp-head.html title=t period=edu.period role=edu.detail -%}
+  {%- for c in edu.projects %}
+  {% include home/project-card.html c=c %}
+  {%- endfor %}
+</section>
+{%- endfor %}

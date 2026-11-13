@@ -1,0 +1,15 @@
+{%- comment -%}
+  MathJax 3。文章 front matter 写 math: true 时加载。
+  写法：行内 $$a+b$$ 或 \\(a+b\\)；独立公式单独成段的 $$...$$
+{%- endcomment -%}
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      tags: 'ams'
+    },
+    options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>

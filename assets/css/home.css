@@ -1,0 +1,173 @@
+/* 简洁学术风（参考 jemdoc），单列布局 */
+:root {
+  --text: #1f2328;
+  --muted: #6a737d;
+  --link: #224b8d;
+  --accent: #527bbd;
+  --line: #d6dbe4;
+  --soft-line: #e7eaf0;
+  --tag-bg: #eef3fb;
+  --hl: #b03a2e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: #fff;
+  font: 16px/1.8 -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+main { max-width: 980px; margin: 0 auto; padding: 36px 28px 48px; }
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+p { margin: 6px 0; }
+
+/* ---------- 顶部个人信息 ---------- */
+.profile { display: flex; gap: 28px; align-items: center; margin-bottom: 8px; }
+.profile img { width: 150px; height: 200px; object-fit: cover; border-radius: 4px;
+               box-shadow: 0 1px 4px rgba(0,0,0,.15); flex-shrink: 0; }
+.profile h1 { margin: 0 0 6px; font-size: 30px; font-weight: 600; }
+.profile h1 small { font-size: 19px; color: var(--muted); font-weight: 400; }
+.profile p { margin: 2px 0; }
+.links a { margin-right: 4px; }
+
+/* ---------- 区块标题（工作经历 / 教育经历 / 项目） ---------- */
+h2 {
+  font-size: 24px; font-weight: 600; color: #2b2f36;
+  margin: 44px 0 6px; padding-bottom: 6px;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* ---------- 一段经历：机构 + 时间 ---------- */
+.exp { margin: 0; padding: 22px 0 10px; }
+.exp + .exp { border-top: 1px solid var(--soft-line); }
+.exp-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.exp-head h3 { margin: 0; font-size: 20px; font-weight: 600; color: #1f2328; }
+.exp-period {
+  flex-shrink: 0; color: var(--accent); font-weight: 600; font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.exp-role { color: var(--muted); font-size: 15px; margin-top: 2px; }
+.exp-summary { margin: 8px 0 4px; color: #3a4048; }
+.exp-summary p { margin: 0; }
+
+/* ---------- 经历下的项目小节 ---------- */
+.proj { margin: 22px 0 6px; }
+.proj h4 {
+  margin: 0 0 6px; padding-left: 10px;
+  font-size: 17px; font-weight: 600; line-height: 1.45; color: #1f2328;
+  border-left: 3px solid var(--accent);
+}
+.proj-links { margin-left: 10px; font-size: 14.5px; font-weight: 400; }
+.proj > p { margin: 4px 0; }
+.proj ol { margin: 4px 0; padding-left: 1.5em; }
+.proj ol > li { margin: 3px 0; padding-left: 2px; }
+.proj ol > li::marker { color: var(--muted); font-size: 15px; }
+.proj ul { margin: 2px 0; padding-left: 1.3em; }
+.proj ul > li { margin: 2px 0; }
+
+/* 项目下的公开工作（论文）：虚线框卡片，标题行带「公开工作」标签 + 灰色副标题 + 链接 */
+.work {
+  margin: 16px 0 10px; padding: 14px 20px 10px;
+  background: #fafbfd; border: 1.5px dashed #b9c7de; border-radius: 8px;
+}
+.work-head {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px;
+  margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--soft-line);
+}
+.work-tag {
+  flex-shrink: 0; padding: 0 9px; font-size: 12.5px; line-height: 22px; font-weight: 600;
+  color: #fff; background: var(--accent); border-radius: 11px;
+}
+.work-title { font-size: 17px; font-weight: 700; color: #1f2328; letter-spacing: .2px; }
+.work-sub { color: var(--muted); font-size: 15px; }
+.work-sub::before { content: "·"; margin-right: 8px; color: #b0b8c4; }
+.work .proj-links { margin-left: auto; font-size: 14px; }
+.work > p { margin: 4px 0 6px; }
+.work ol { margin-top: 6px; }
+.work .media { margin: 14px 0 4px; }
+.work .media img { border-color: #e3e7ee; }
+
+/* 指标徽章 */
+.badges { margin: 8px 0 2px; }
+.badge {
+  display: inline-block; margin: 2px 6px 2px 0; padding: 1px 9px;
+  font-size: 14px; background: var(--tag-bg); border: 1px solid #cdd9ee; border-radius: 10px;
+}
+
+/* ---------- 项目卡片：左图右文（教育经历 / 早期项目） ---------- */
+.project { display: flex; gap: 22px; margin: 18px 0 22px; }
+.project ul { margin: 4px 0; padding-left: 1.4em; }
+.project li { margin: 2px 0; }
+.project .thumb { width: 280px; flex-shrink: 0; }
+.project .body { flex: 1; min-width: 0; }
+.project h3 { font-size: 17px; margin: 0 0 4px; font-weight: 600; }
+.project p { margin: 4px 0; }
+.project .thumb .media { display: grid; gap: 8px; }
+.project .thumb .media.pair { grid-template-columns: 1fr 1fr; }
+/* 缩略图：竖图限制高度并居中，避免过长 */
+.project .thumb .media img, .project .thumb .media video { max-height: 220px; width: auto; max-width: 100%; margin: 0 auto; }
+.project .thumb .media.pair img { max-height: none; width: 100%; }
+/* 多图卡片：图片放在文字下方，两张一行，等高对齐 */
+.project.media-below .media {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px; margin: 12px 0 4px; max-width: 720px;
+}
+.project.media-below .media img { aspect-ratio: 4 / 3; object-fit: cover; }
+.meta { color: var(--muted); font-size: 15px; }
+
+/* ---------- 配图 / 视频（_includes/media.html） ---------- */
+.media figure { margin: 0; }
+.media img, .media video {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--soft-line); border-radius: 4px; background: #fff;
+}
+.media figcaption { margin-top: 6px; font-size: 13.5px; line-height: 1.5; color: var(--muted); text-align: center; }
+
+/* 经历中的配图：两张一行；wide 图独占一行（架构图等） */
+.proj .media {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 14px; margin: 14px 0 8px;
+}
+.proj .media figure { display: flex; flex-direction: column; justify-content: center; }
+.proj .media figure.wide { grid-column: 1 / -1; }
+/* 宽图铺满一行，但限制高度，避免近似方形的图过大 */
+.proj .media figure.wide img { width: auto; max-width: 100%; max-height: 520px; margin: 0 auto; }
+
+/* 点击放大查看原图（assets/js/home.js） */
+.media img { cursor: zoom-in; }
+.lightbox {
+  position: fixed; inset: 0; z-index: 100; padding: 24px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: rgba(18, 20, 26, .88); cursor: zoom-out;
+}
+.lightbox img {
+  max-width: 96vw; max-height: 86vh; background: #fff;
+  border-radius: 4px; box-shadow: 0 8px 32px rgba(0, 0, 0, .45);
+}
+.lightbox p { color: #e8e8e8; font-size: 14px; margin: 12px 0 0; text-align: center; }
+
+/* <mark> 用作红色强调 */
+mark { background: none; color: var(--hl); font-weight: 600; }
+
+/* ---------- 其他 ---------- */
+.entry { margin: 14px 0 18px; }
+.entry h3 { font-size: 17px; margin: 0 0 2px; font-weight: 600; }
+.entry ul { margin: 4px 0; padding-left: 1.4em; }
+.pubs li { margin: 6px 0; }
+footer { margin-top: 56px; color: #999; font-size: 14px; text-align: center; }
+
+/* ---------- 移动端 ---------- */
+@media (max-width: 680px) {
+  main { padding: 24px 16px 40px; }
+  .profile { flex-direction: column; align-items: flex-start; }
+  .exp-head { flex-direction: column; gap: 0; }
+  .project { flex-direction: column; }
+  .project .thumb { width: 100%; }
+  .proj .media { grid-template-columns: 1fr; }
+}

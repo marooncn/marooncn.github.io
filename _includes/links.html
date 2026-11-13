@@ -1,0 +1,4 @@
+{%- comment -%} 渲染 [ name ] 链接组：{% include links.html links=xxx %} {%- endcomment -%}
+{%- for l in include.links -%}
+[&nbsp;<a href="{{ l.url | relative_url }}">{{ l.name }}</a>&nbsp;]{% unless forloop.last %}&ensp;{% endunless %}
+{%- endfor -%}

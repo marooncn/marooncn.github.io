@@ -1,0 +1,13 @@
+<header class="header">
+  <nav class="nav">
+    <div class="logo">
+      <a href="{{ '/blog/' | relative_url }}" accesskey="h">{{ site.blog.title }}</a>
+    </div>
+    <ul id="menu">
+      {%- for m in site.blog.menu %}
+      {%- assign murl = m.url | relative_url %}
+      <li><a href="{{ murl }}"{% if page.url == m.url %} class="active"{% endif %}>{{ m.name }}</a></li>
+      {%- endfor %}
+    </ul>
+  </nav>
+</header>

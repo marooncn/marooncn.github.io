@@ -1,0 +1,58 @@
+# ============================================================
+# 站点全局配置（修改后本地预览需重启 jekyll serve）
+# ============================================================
+
+title: 马留龙 Liulong Ma
+author: Liulong Ma
+description: 马留龙（Liulong Ma）个人主页：具身智能 VLA、自动驾驶端到端规划、决策规划与强化学习。
+url: https://marooncn.github.io   # 绑定自定义域名后改成新域名
+baseurl: ""
+lang: zh-CN
+timezone: Asia/Shanghai
+
+# ---------------- Blog ----------------
+blog:
+  title: Liulong's Log            # Blog 顶部左上角名称
+  description: About Physical AI
+  chars_per_minute: 500           # 阅读时长估算：中文按每分钟 500 字
+  words_per_minute: 200           # 英文文章（lang: en）按每分钟 200 词
+  cite_author: Ma, Liulong        # 文末引用格式中的作者
+  cite_key: ma                    # BibTeX key 前缀
+  menu:                           # 顶部导航
+    - { name: Posts, url: /blog/ }
+    - { name: About, url: / }
+
+permalink: /blog/:year-:month-:day-:title/
+
+defaults:
+  - scope: { path: "", type: posts }
+    values:
+      layout: post
+      toc: true        # 文章目录，单篇可在 front matter 写 toc: false 关闭
+      math: false      # 需要公式的文章在 front matter 写 math: true
+      citation: true   # 文末自动生成引用格式（Cited as / BibTeX）
+
+# ---------------- 构建 ----------------
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  math_engine: mathjax
+  syntax_highlighter: rouge
+highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: blog/feed.xml
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
+  - scripts

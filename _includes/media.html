@@ -1,0 +1,23 @@
+{%- comment -%}
+  渲染配图 / 视频列表。
+  参数：items = 字符串或 {src, caption, wide} 的列表；pair = true 时两图并排
+  wide: true 时该图在经历配图中独占一整行（适合架构图等宽图）
+  .mp4 / .webm 按视频处理（自动播放、循环、静音），其余按图片处理
+{%- endcomment -%}
+{%- if include.items -%}
+<div class="media{% if include.pair %} pair{% endif %}">
+  {%- for m in include.items -%}
+    {%- if m.src -%}{%- assign src = m.src -%}{%- assign cap = m.caption -%}{%- assign wide = m.wide -%}
+    {%- else -%}{%- assign src = m -%}{%- assign cap = nil -%}{%- assign wide = nil -%}{%- endif -%}
+    {%- assign ext = src | split: '.' | last | downcase -%}
+    <figure{% if wide %} class="wide"{% endif %}>
+      {%- if ext == 'mp4' or ext == 'webm' -%}
+      <video src="{{ src | relative_url }}" autoplay loop muted playsinline preload="metadata"></video>
+      {%- else -%}
+      <img src="{{ src | relative_url }}" alt="{{ cap | default: src | split: '/' | last }}" loading="lazy">
+      {%- endif -%}
+      {%- if cap -%}<figcaption>{{ cap }}</figcaption>{%- endif -%}
+    </figure>
+  {%- endfor -%}
+</div>
+{%- endif -%}

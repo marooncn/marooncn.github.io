@@ -1,0 +1,18 @@
+{%- comment -%} 文末引用格式（参考 Lil'Log）。单篇关闭：front matter 写 citation: false {%- endcomment -%}
+{%- assign year = page.date | date: '%Y' -%}
+{%- assign month = page.date | date: '%b' -%}
+{%- assign key = page.slug | remove: '-' | truncate: 24, '' -%}
+<h2 id="citation">Citation</h2>
+<p>Cited as:</p>
+<blockquote>
+  <p>{{ site.blog.cite_author }}. ({{ month }} {{ year }}). {{ page.title }}. {{ site.blog.title }}. {{ page.url | absolute_url }}.</p>
+</blockquote>
+<p>Or</p>
+<div class="highlight"><pre class="highlight"><code>@article{{ "{" }}{{ site.blog.cite_key }}{{ year }}{{ key }},
+  title   = "{{ page.title }}",
+  author  = "{{ site.blog.cite_author }}",
+  journal = "{{ site.url | remove: 'https://' | remove: 'http://' }}",
+  year    = "{{ year }}",
+  month   = "{{ month }}",
+  url     = "{{ page.url | absolute_url }}"
+}</code></pre></div>

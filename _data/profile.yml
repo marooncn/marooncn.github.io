@@ -1,0 +1,27 @@
+# ============================================================
+# 个人信息 + Biography
+# 文本字段支持 Markdown：**加粗**、[链接](url)、<mark>标红强调</mark>
+# 注意：以 * 或 [ 开头的文本必须用引号包起来
+# ============================================================
+
+name: 马留龙
+name_en: Liulong Ma
+photo: img/me.png
+
+# 头像右侧的信息行（按顺序显示，可增删）
+info:
+  - "Email: [LiulongMa@outlook.com](mailto:LiulongMa@outlook.com)"
+
+# 头像下方的链接，显示为 [ Blog ] [ GitHub ] ...
+links:
+  - { name: Blog, url: /blog/ }
+  - { name: GitHub, url: "https://github.com/marooncn" }
+  # - { name: 知乎, url: "https://www.zhihu.com/people/xxx" }
+  # - { name: Google Scholar, url: "https://scholar.google.com/citations?user=xxx" }
+  # - { name: LinkedIn, url: "https://www.linkedin.com/in/xxx" }
+
+# Biography：每一项是一段
+bio:
+  - "现任**比亚迪新技术研究院端到端开发部具身大脑负责人**（团队 34 人），负责具身模型研发、部署、落地场景及数采方案。此前担任比亚迪智驾端到端规划模型 & VLA 模型负责人，从零组建团队并实现一段式端到端规划模型一年内量产；曾任百度 Apollo 萝卜快跑高速高架 PNC 场景负责人、阿里巴巴达摩院 AD Lab 决策规划算法工程师。"
+  - "2019 年获哈尔滨工业大学硕士学位（机器人技术与系统国家重点实验室），2017 年获同济大学机械电子（机器人）学士学位。"
+  - 研究兴趣： Physical AI、强化学习、世界模型。

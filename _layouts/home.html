@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo title=false %}
+  <title>{{ site.title }} - Homepage</title>
+  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
+  <script src="{{ '/assets/js/home.js' | relative_url }}" defer></script>
+  {% feed_meta %}
+</head>
+<body>
+<main>
+{{ content }}
+  <footer>Last updated: {{ site.time | date: '%Y-%m' }} · Hosted on GitHub Pages</footer>
+</main>
+</body>
+</html>

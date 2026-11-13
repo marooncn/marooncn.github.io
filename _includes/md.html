@@ -1,0 +1,10 @@
+{%- comment -%}
+  渲染一段 Markdown 文本。
+  用法：{% include md.html text=xxx %}           → 块级（带 <p>）
+        {% include md.html text=xxx inline=1 %}  → 行内（去掉 <p>）
+{%- endcomment -%}
+{%- if include.inline -%}
+{{ include.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}
+{%- else -%}
+{{ include.text | markdownify }}
+{%- endif -%}

@@ -1,0 +1,123 @@
+# ============================================================
+# 工作经历（按时间倒序，新的写在最上面）
+#
+# 每段经历：
+#   period:   时间段（显示在公司名右侧）
+#   org:      公司 · 部门
+#   role:     职位（灰色小字）
+#   summary:  一段概述
+#   projects: 项目列表，每个项目在页面上是一个带标题的小节：
+#     title:   项目标题
+#     links:   [ {name, url} ]，显示在标题后，如 [arXiv] [Code]
+#     summary: 项目简介（一两句话）
+#     items:   要点列表（编号）；某一项若需要子列表，写成 { text: ..., sub: [..] }
+#     badges:  指标徽章
+#     media:   配图 / 视频（.mp4/.webm 自动按视频循环播放），
+#              可写成字符串，或 { src, caption, wide }；wide: true 时独占一行（适合架构图）
+#              普通配图两张一行
+#     works:   项目下的公开工作（论文等），每个显示为一个带「公开工作」标签的虚线框卡片，
+#              字段：title / subtitle（标题后的灰色说明）/ links / summary / items / media
+#
+# 文本支持 Markdown；<mark>文本</mark> 显示为红色强调
+# 以 * 开头的文本必须加引号，如 "**加粗**：..."
+# ============================================================
+
+- period: 2024.11 – 至今
+  org: 比亚迪 · 新技术研究院
+  role: 智驾端到端规划模型 & VLA 模型负责人
+  summary: "从零到一组建团队，完成从数据闭环、模型设计到工程落地、量产迭代的全过程，推动比亚迪智驾自研水平从行业末流跃升至前列；为行业内**[首个承诺智驾兜底](https://www.byd.com/cn/detail626)**的方案提供关键技术支撑。"
+  projects:
+    - title: 一段式端到端规划模型
+      summary: "一年内实现量产。以多项自研算法解决上游特征不稳、模态难定义及散度不足、导航成功率与智能性矛盾、低频场景泛化差等难点。"
+      works:
+        - title: EMoE-Planner
+          subtitle: 显式混合专家的纯学习规划模型
+          links:
+            - { name: arXiv, url: "https://arxiv.org/abs/2505.12311" }
+          summary: "面向城市场景中轨迹多模态难建模、单一专家难以覆盖多样场景、交互考虑不足等问题的纯学习规划模型。nuPlan 闭环得分第一（Val14 **93.06**），成为首个在 nuPlan 闭环仿真中超过规则方法的纯学习模型。"
+          items:
+            - "**Explicit MoE**：以语义明确的 Scene Router 替代传统 MoE 的黑盒路由，按场景显式分配专家，降低单个专家的学习难度，并可直接通过数据配比控制负载均衡；"
+            - "**Scene-specific Query**：按识别出的场景选择对应的终点锚点作为多模态先验，把输出限制在合理的驾驶行为内，提高轨迹质量下限；"
+            - "**Interaction-Oriented Loss**：在损失计算与他车预测中显式考虑自车与他车的交互，降低密集交通中的碰撞率。"
+          media:
+            - { src: img/byd-emoe-framework.png, caption: EMoE-Planner 框架, wide: true }
+
+    - title: VLA 模型
+      items:
+        - 构建基于关键帧及因果决策的 VQA 数据集；
+        - 面向 Physical AI 改进 Flow Matching，满足连续决策、时序一致性与物理约束，推理耗时降低一半以上，模态稳定性与轨迹平滑性显著提升；
+        - 构建带Pixel-based正则约束Latent World Model和基于 LWM 的 RL Post-training;
+      works:
+        - title: HyWorldVLA
+          subtitle: 融合像素与隐空间世界建模的 VLA 模型
+          links:
+            - { name: arXiv, url: "https://arxiv.org/abs/2607.20988" }
+          summary: "像素级未来预测对场景噪声敏感，隐空间世界模型又缺少像素级约束、可解释性差。HyWorldVLA 将两者结合，在 NAVSIM v1 / v2 上达到 SOTA（**90.6** / **89.7**），场景噪声鲁棒性提升 20 余点。"
+          media:
+            - { src: img/byd-hyworldvla-framework.jpg, caption: HyWorldVLA 框架：视频世界模型的隐表征监督 VLM 预训练与 VLA 协同微调, wide: true }
+
+    # 需要时取消注释（具身方向）：
+    # - title: 具身大脑（Lead 34 人）
+    #   items:
+    #     - "**具身数据管线**：格式转换、状态空间对齐、视频帧对齐与合并、清洗及质检，打通自采数据处理链路；基于开源数据构建 **1.7 万小时**开源组合数据集。"
+    #     - text: "**自研 VLA 模型 DiVLA**："
+    #       sub:
+    #         - 对比学习构建基于 Ego、UMI 及其 retarget 合成数据的 Latent Action Model，对齐多类型数据预训练动作空间；
+    #         - 融入 Robotics Prompt，大幅提升跨本体迁移能力；引入光流监督，增强 VLM 基座的动态表征；
+    #         - 设计 Coarse Action 等高效表征 CoT，提升模型推理能力；
+    #         - 搭建三系统方案 DiAct，为前期落地做准备。
+    #     - "**预研**：基于扩散模型 dLLM 的统一扩散基模；WAM 隐式表征及蒸馏探索。"
+    #   badges:
+    #     - RoboTwin2.0 Hard **94.3**
+    #     - LIBERO-Plus **91.8**
+    #     - RoboCase365 **43.5**
+    #     - 新机型 100h 后训练成功率 73% → **97%**
+
+- period: 2023.07 – 2024.10
+  org: 百度 · IDG · Apollo
+  role: 萝卜快跑高速高架 PNC 场景负责人、技术主管
+  summary: 构建基于学习的交互决策算法、推进 Neural Planner，使萝卜快跑成为**[首个实现智能网联汽车横跨长江贯通示范运营](https://mp.weixin.qq.com/s/XdAxGcLq0yqrb5Nn3tXjJQ)**、**[首个开通机场自动驾驶接驳的全无人自动驾驶汽车](https://mp.weixin.qq.com/s/-h8s9nHA8rry8FY6J4Oe3Q)**。
+  projects:
+    - title: 交互推演框架 2.0
+      summary: 支持多场景、多障碍物博弈的交互推演框架，应用于跨线 Nudge、匝道汇入及高速换道场景，显著提升自车强交互能力。
+      items:
+        - "基于纵向博弈的交互推演：将推演从 ST 扩展到 S-L-T 空间，按横向侵入程度分层考虑交互障碍物，并对潜在来车构建 mock 障碍物，推演他车对自车行为的 best response，用于拥堵场景下的跨线 Nudge；"
+        - "基于预测概率分布的交互推演建模：针对匝道他车汇入的预测不确定性，将纵向推演从单条预测轨迹扩展到概率分布域：在汇入区间采样汇入点，代入预测的二维正态分布求解在各区间汇入的概率，投影到自车 ST 图后对每段求解让行 / 抢行（Yield / Overtake）决策，以期望代价选出最优决策与轨迹，并评估相反决策下的最低代价作为安全兜底；对不遵循社会兼容行为的他车，通过观测-修正逼近均衡解。"
+      media:
+        - { src: img/baidu-nudge-slt.jpg, caption: 拥堵场景跨线 Nudge 的 S-L-T 交互推演, wide: true }
+        - { src: img/baidu-merge-distribution-h.jpg, caption: 他车汇入点的概率分布, wide: true }
+
+    - title: 基于学习的交互决策
+      summary: 开发基于策略优先级的纵向决策链路，训练基于集成学习的切车决策器。
+
+    - title: Neural Planner
+      summary: 开发基于学习的端到端规划预测联合决策器，提供高阶先验与轨迹筛选，与交互推演框架配合。
+
+- period: 2019.08 – 2023.06
+  org: 阿里巴巴 · 达摩院
+  projects:
+    - title: LOAP：基于 Off-policy MCTS 的强化学习规划器
+      summary: "Learnable Off-policy MCTS with AUCB。将深度强化学习与 MCTS 结合，以完全 self-play 的方式训练满足车辆动力学约束的交互式运动规划器，在搜索树中显式建模交互车辆的意图。交互场景到达率由 53.3% 提升至 **92.3%**，应用于小蛮驴产品。"
+      # items:
+      #   - "**AUCB 选择策略**：在 PUCB 中引入归一化优势函数，并以渐进衰减的先验控制探索程度，更好地平衡探索与利用，避免陷入局部最优；"
+      #   - "**Bootstrapping Q**：节点价值仅用前向分支回报更新，解决累计回报对碰撞等坏动作不敏感的问题；"
+      #   - "**Off-policy 价值学习**：以 Rainbow 作为 Q 网络，经验池可预填充人类驾驶数据，显著提升数据效率与收敛速度；"
+      #   - "**并行训练框架**：多 Actor（各自持有 GPU 模型副本）+ Learner，基于共享内存通信，参数同步延迟 < 1ms，使单进程无法收敛的随机场景得以收敛；"
+      #   - "**Reeds-Shepp reward**：以 RS 曲线距离设计稠密奖励，实现阿克曼底盘在狭窄空间的精准泊车、侧方停车、倒库与掉头。"
+      # badges:
+      #   - 交互场景到达率 **92.3%**（纯策略网络 53.3%）
+      #   - 碰撞率 46.7% → **7.7%**
+      #   - 7 个真实园区场景泛化到达率 **92.6%**
+      media:
+        - { src: img/loap-selfplay.jpg, caption: Self-play 训练与子树复用 }
+        - { src: img/loap-generalization.jpg, caption: 7 个真实场景泛化测试 }
+
+    - title: 交互推演框架1.0
+      summary: "面向无保护左转、匝道汇入等强交互场景，搭建「自车语义候选轨迹采样 → 他车最优交互响应 → 舒适性 + 安全性 Cost 评估」的交互推演模型：按 Yield / Not Yield 语义并结合预推演生成自车候选轨迹，在 ST 图中求解每条候选下他车的最优交互轨迹，选出安全舒适、符合他车预期的最优解；透传 Normal / Warning / Danger 推演状态，与横向及后决策联动调整汇入点或切换 Fallback 轨迹。无保护左转线上 Bad Case 通过率由 77.1% 提升至 **90.8%**。"
+      media:
+        - { src: img/ali-interaction-framework.png, caption: 交互推演模型框架, wide: true }
+
+- period: 2018.07 – 2018.10
+  org: 微软亚洲研究院 · 多媒体计算组（Media Computing）
+  role: 研究实习生
+  summary: 强化学习在语音传输中的应用：根据网络状况与语音信息，用 RL 动态决策传输 buffer 大小，平衡时延（buffer 过大）与丢包（buffer 过小）；参与从算法设计、实现到工程优化的全过程，方案已应用于相关产品。

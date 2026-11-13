@@ -1,0 +1,14 @@
+---
+layout: home
+---
+{%- comment -%}
+  首页骨架：调整下面 include 的顺序即可调整区块顺序；删掉某行即隐藏该区块。
+  内容请修改 _data/ 目录下对应的 yml 文件。
+  可用但当前未启用的区块：
+    {% include home/bio.html %}           Biography（_data/profile.yml 中的 bio）
+    {% include home/publications.html %}  论文（_data/publications.yml）
+{%- endcomment -%}
+{% include home/profile.html %}
+{% include home/experience.html %}
+{% include home/education.html %}
+{% include home/projects.html %}

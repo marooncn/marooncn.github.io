@@ -1,0 +1,14 @@
+{%- if site.data.publications.size > 0 -%}
+<h2 id="publications">Publications</h2>
+<ul class="pubs">
+  {%- for pub in site.data.publications %}
+  <li>
+    <b>{{ pub.title }}</b>
+    {%- if pub.authors %}<br><span class="authors">{% include md.html text=pub.authors inline=1 %}</span>{% endif -%}
+    {%- if pub.venue %}<br><i>{{ pub.venue }}</i>{% endif -%}
+    {%- if pub.desc %} — {% include md.html text=pub.desc inline=1 %}{% endif -%}
+    {%- if pub.links %} {% include links.html links=pub.links %}{% endif %}
+  </li>
+  {%- endfor %}
+</ul>
+{%- endif -%}

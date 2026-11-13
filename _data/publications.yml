@@ -1,0 +1,22 @@
+# ============================================================
+# 论文 / 公开成果（建议按时间倒序）
+# 字段：title（必填）、authors、venue、desc、links
+# 作者列表里可用 **Liulong Ma** 加粗自己
+# ============================================================
+
+- title: EMoE-Planner
+  # authors: "..., **Liulong Ma**, ..."
+  # venue: arXiv 2025
+  desc: 端到端规划，nuPlan Val14 闭环第一
+  links:
+    - { name: arXiv, url: "https://arxiv.org/abs/2505.12311" }
+
+- title: HyWorldVLA
+  desc: 基于 hybrid world representations 的自动驾驶 VLA
+  links:
+    - { name: arXiv, url: "https://arxiv.org/abs/2607.20988" }
+
+- title: KB-Tree
+  desc: 基于深度强化学习与 MCTS 的规划器
+  links:
+    - { name: IEEE, url: "https://ieeexplore.ieee.org/document/9636442" }

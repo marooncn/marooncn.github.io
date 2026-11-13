@@ -1,0 +1,14 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- if page.layout == 'post' %}
+{% seo %}
+{%- else %}
+{% seo title=false %}
+<title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.blog.title }}</title>
+{%- endif %}
+{% feed_meta %}
+<link rel="stylesheet" href="{{ '/assets/css/blog.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}">
+{%- if page.math %}
+{% include blog/mathjax.html %}
+{%- endif %}

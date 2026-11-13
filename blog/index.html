@@ -1,0 +1,19 @@
+---
+layout: blog
+permalink: /blog/
+---
+<article class="first-entry home-info">
+  <header class="entry-header"><h1>{{ site.blog.title }}</h1></header>
+  <div class="entry-content"><p>{{ site.blog.description }}</p></div>
+  <footer class="entry-footer">
+    by <a href="{{ '/' | relative_url }}">{{ site.author }}</a>
+  </footer>
+</article>
+
+{% for post in site.posts %}
+{% include blog/entry.html post=post %}
+{% endfor %}
+
+{% if site.posts.size == 0 %}
+<p class="empty">第一篇文章即将上线，敬请期待。</p>
+{% endif %}

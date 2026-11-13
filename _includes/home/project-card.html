@@ -1,0 +1,17 @@
+{%- comment -%}
+  项目卡片，参数 c = 项目对象。
+  单张图（或 pair: true 的小图组）：左图右文；多张图：文字在上，图片在下两张一行。
+{%- endcomment -%}
+{%- assign below = false -%}
+{%- if include.c.media.size > 1 and include.c.pair != true -%}{%- assign below = true -%}{%- endif -%}
+<div class="project{% if below %} media-below{% endif %}">
+  {%- if include.c.media and below == false %}<div class="thumb">{% include media.html items=include.c.media pair=include.c.pair %}</div>{% endif %}
+  <div class="body">
+    <h3>{% if include.c.url %}<a href="{{ include.c.url }}">{{ include.c.name }}</a>{% else %}{{ include.c.name }}{% endif %}{% if include.c.subtitle %} — {{ include.c.subtitle }}{% endif %}</h3>
+    {%- if include.c.desc %}{% include md.html text=include.c.desc %}{% endif -%}
+    {%- if include.c.items %}<ul>{% for it in include.c.items %}<li>{% include md.html text=it inline=1 %}</li>{% endfor %}</ul>{% endif -%}
+    {%- if include.c.meta %}<p class="meta">{{ include.c.meta }}</p>{% endif -%}
+    {%- if include.c.links %}<p>{% include links.html links=include.c.links %}</p>{% endif %}
+    {%- if below %}{% include media.html items=include.c.media %}{% endif %}
+  </div>
+</div>

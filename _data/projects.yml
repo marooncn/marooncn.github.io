@@ -1,0 +1,56 @@
+# ============================================================
+# 项目（可以有多个分组，每组是首页上的一个大标题区块）
+#
+# 分组字段：
+#   title:  区块标题
+#   cards:  左图右文的项目卡片
+#     name / url / subtitle / desc / items（要点列表）/ meta / links
+#     media: 配图或视频列表，可写成字符串或 { src, caption }
+#     pair:  true 时两张图并排显示（适合小方图）
+#   lists:  纯文字列表 [ {title, items: [{name, url, desc}]} ]
+# ============================================================
+
+- title: Projects before 2019
+  cards:
+    - name: robot_grasp
+      url: https://github.com/marooncn/robot_grasp
+      subtitle: JCAR 竞赛机械臂抓取
+      desc: JCAR 机器人竞赛项目，包含仿真与实物两部分。
+      items:
+        - "**仿真**：基于 Gazebo 搭建 Kinova 机械臂抓取仿真环境，并改进了官方 Kinova 模型。"
+        - "**实物**：基于 Kinect 图像进行目标分割，使用决策树对物体分类识别，再将图像中的目标点转换到机械臂基座坐标系完成抓取。"
+      media:
+        - { src: img/grasp-sim.jpg, caption: 仿真环境 }
+        - { src: img/grasp-classify.jpg, caption: 目标识别与分类 }
+
+    - name: Defect-Detection-Classifier
+      url: https://github.com/marooncn/Defect-Detection-Classifier
+      subtitle: 小样本视觉缺陷检测
+      desc: 基于小数据集的锅炉水冷壁管表面缺陷视觉检测与分类。
+      items:
+        - "**数据集**：样本难以采集，仅有 400 张 256×256 图像（训练 320 张、测试 80 张，正常 / 缺陷各半）。"
+        - "**分类器**：对比 LBP + SVM、CNN 特征 + SVM、简单 CNN、VGG16 迁移学习、神经网络搜索与 gcForest；高斯滤波 + LBP + SVM 准确率最高，达 **97.25%**。"
+      media:
+        - { src: img/defect-normal.jpg, caption: 正常样本 }
+        - { src: img/defect-defect.jpg, caption: 缺陷样本 }
+
+    - name: OpenHand
+      url: https://github.com/marooncn/OpenHand
+      subtitle: 面向空中机器人的轻量化机械手
+      desc: 基于 Yale OpenHand Model T 重新设计的轻量化欠驱动机械手。原版重 490g，减重约一半以满足空中机器人对抓手轻量、灵巧的需求；细节按国内标准重新设计，所有零部件均可在国内采购。
+      media:
+        - { src: img/openhand-v26.jpg, caption: OpenHand v2.6 }
+        - { src: img/openhand-v31.jpg, caption: OpenHand v3.1（挂载于无人机） }
+
+
+
+  # 需要时取消注释即可显示
+  # lists:
+  #   - title: 其他项目
+  #     items:
+  #       - { name: RL, url: "https://github.com/marooncn/RL", desc: 强化学习 Demo 集（★ 80） }
+  #       - { name: imu_filter, url: "https://github.com/marooncn/imu_filter", desc: ROS 下的 IMU 滤波（C++） }
+  #   - title: 学习笔记
+  #     items:
+  #       - { name: learning_note, url: "https://github.com/marooncn/learning_note", desc: 学习笔记合集（★ 140+） }
+  #       - { name: RLnotes, url: "https://github.com/marooncn/RLnotes", desc: 强化学习笔记（★ 30+） }

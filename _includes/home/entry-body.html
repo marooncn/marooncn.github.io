@@ -1,0 +1,21 @@
+{%- comment -%} 一个项目的正文：summary、items、badges、media {%- endcomment -%}
+{%- if include.e.summary %}{% include md.html text=include.e.summary %}{% endif -%}
+{%- if include.e.items %}
+<ol>
+  {%- for it in include.e.items %}
+  <li>
+    {%- if it.text -%}
+      {% include md.html text=it.text inline=1 %}
+      {%- if it.sub %}
+      <ul>{% for s in it.sub %}<li>{% include md.html text=s inline=1 %}</li>{% endfor %}</ul>
+      {%- endif -%}
+      {%- include media.html items=it.media -%}
+    {%- else -%}
+      {% include md.html text=it inline=1 %}
+    {%- endif -%}
+  </li>
+  {%- endfor %}
+</ol>
+{%- endif -%}
+{%- if include.e.badges %}{% include home/badges.html badges=include.e.badges %}{% endif -%}
+{%- include media.html items=include.e.media -%}

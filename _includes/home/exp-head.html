@@ -1,0 +1,6 @@
+{%- comment -%} 经历 / 教育的标题行：左侧机构名，右侧时间段，下方灰色职位。参数 title / period / role {%- endcomment -%}
+<div class="exp-head">
+  <h3>{% include md.html text=include.title inline=1 %}</h3>
+  {%- if include.period %}<span class="exp-period">{{ include.period }}</span>{% endif %}
+</div>
+{%- if include.role %}<div class="exp-role">{% include md.html text=include.role inline=1 %}</div>{% endif -%}

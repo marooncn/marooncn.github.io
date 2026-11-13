@@ -1,0 +1,11 @@
+{%- assign p = site.data.profile -%}
+<header class="profile">
+  <img src="{{ p.photo | relative_url }}" alt="{{ p.name }}">
+  <div>
+    <h1>{{ p.name }} <small>{{ p.name_en }}</small></h1>
+    {%- for line in p.info %}
+    <p>{% include md.html text=line inline=1 %}</p>
+    {%- endfor %}
+    <p class="links">{% include links.html links=p.links %}</p>
+  </div>
+</header>

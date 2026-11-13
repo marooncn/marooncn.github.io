@@ -1,0 +1,5 @@
+{%- assign p = site.data.profile -%}
+<h2 id="bio">Biography</h2>
+{% for para in p.bio -%}
+{% include md.html text=para %}
+{%- endfor %}

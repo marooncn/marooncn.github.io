@@ -1,0 +1,19 @@
+<h2 id="experience">工作经历</h2>
+{% for exp in site.data.experience %}
+<section class="exp">
+  {%- include home/exp-head.html title=exp.org period=exp.period role=exp.role -%}
+  {%- if exp.summary %}<div class="exp-summary">{% include md.html text=exp.summary %}</div>{% endif -%}
+  {%- for p in exp.projects %}
+  <div class="proj">
+    <h4>{% include md.html text=p.title inline=1 %}{% if p.links %}<span class="proj-links">{% include links.html links=p.links %}</span>{% endif %}</h4>
+    {%- include home/entry-body.html e=p -%}
+    {%- for w in p.works %}
+    <div class="work">
+      <div class="work-head"><span class="work-tag">公开工作</span><span class="work-title">{% include md.html text=w.title inline=1 %}</span>{% if w.subtitle %}<span class="work-sub">{{ w.subtitle }}</span>{% endif %}{% if w.links %}<span class="proj-links">{% include links.html links=w.links %}</span>{% endif %}</div>
+      {%- include home/entry-body.html e=w -%}
+    </div>
+    {%- endfor %}
+  </div>
+  {%- endfor %}
+</section>
+{% endfor %}

@@ -1,0 +1,10 @@
+{%- comment -%} 文章列表中的一张卡片 {%- endcomment -%}
+{%- assign post = include.post -%}
+<article class="post-entry">
+  <header class="entry-header"><h2>{{ post.title }}</h2></header>
+  <div class="entry-content">
+    <p>{% if post.summary %}{{ post.summary }}{% else %}{{ post.excerpt | strip_html | strip_newlines | truncate: 160 }}{% endif %}</p>
+  </div>
+  <footer class="entry-footer">{% include blog/post-meta.html post=post short=1 %}</footer>
+  <a class="entry-link" aria-label="{{ post.title }}" href="{{ post.url | relative_url }}"></a>
+</article>
