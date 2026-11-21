@@ -24,9 +24,15 @@
 
 - period: 2024.11 – 至今
   org: 比亚迪 · 新技术研究院
-  role: 智驾端到端规划模型 & VLA 模型负责人
-  summary: "从零到一组建团队，完成从数据闭环、模型设计到工程落地、量产迭代的全过程，推动比亚迪智驾自研水平从行业末流跃升至前列；为行业内**[首个承诺智驾兜底](https://www.byd.com/cn/detail626)**的方案提供关键技术支撑。"
+  role: 具身大脑负责人（-至今）；智驾端到端规划模型 & VLA 模型负责人（24.11-26.3）
+  summary: "从零到一组建团队，完成从数据闭环、模型设计到工程落地、量产迭代的全过程，推动比亚迪智驾自研水平从行业末流跃升至前列；为行业内**[首个承诺智驾兜底](https://www.byd.com/cn/detail626)**的方案提供关键技术支撑。同步负责具身大脑研发，迭代内部自研模型DiVLA，使用多项技术提升跨模态、跨构型、精细操作及系统鲁棒性。"
   projects:
+    - title: 具身VLA模型DiVLA
+      items:
+        - DiVLA1.0：设计Coarse Action等高效表征COT，提升模型推理能力；改进FM范式；基于DPPO的RL Post-training;
+        - DiVLA2.0：使用对比学习构建基于Ego、UMI及其retarget合成数据的Latent Action model，对齐多类型数据预训练时的动作空间；融入Robotics Prompt，大幅提升跨本体迁移能力；引入光流监督，增强VLM基座的动态表征性能；构建三系统方案DiACT，提升系统调度能力和系统鲁棒性；
+        - DiVLA3.0：模型结构升级为三专家系统；DiACT升级为Harness方案，带MEM、Verifier及反思层。
+
     - title: 一段式端到端规划模型
       summary: "一年内实现量产。以多项自研算法解决上游特征不稳、模态难定义及散度不足、导航成功率与智能性矛盾、低频场景泛化差等难点。"
       works:
@@ -42,11 +48,11 @@
           media:
             - { src: img/byd-emoe-framework.png, caption: EMoE-Planner 框架, wide: true }
 
-    - title: VLA 模型
+    - title: 智驾VLA 模型
       items:
         - 构建基于关键帧及因果决策的 VQA 数据集；
         - 面向 Physical AI 改进 Flow Matching，满足连续决策、时序一致性与物理约束，推理耗时降低一半以上，模态稳定性与轨迹平滑性显著提升；
-        - 构建带Pixel-based正则约束Latent World Model和基于 LWM 的 RL Post-training;
+        - 构建带Pixel-based正则约束Latent World Model和基于 LWM 的 RL Post-training
       works:
         - title: HyWorldVLA
           subtitle: 融合像素与隐空间世界建模的 VLA 模型
@@ -56,22 +62,6 @@
           media:
             - { src: img/byd-hyworldvla-framework.jpg, caption: HyWorldVLA 框架：视频世界模型的隐表征监督 VLM 预训练与 VLA 协同微调, wide: true }
 
-    # 需要时取消注释（具身方向）：
-    # - title: 具身大脑（Lead 34 人）
-    #   items:
-    #     - "**具身数据管线**：格式转换、状态空间对齐、视频帧对齐与合并、清洗及质检，打通自采数据处理链路；基于开源数据构建 **1.7 万小时**开源组合数据集。"
-    #     - text: "**自研 VLA 模型 DiVLA**："
-    #       sub:
-    #         - 对比学习构建基于 Ego、UMI 及其 retarget 合成数据的 Latent Action Model，对齐多类型数据预训练动作空间；
-    #         - 融入 Robotics Prompt，大幅提升跨本体迁移能力；引入光流监督，增强 VLM 基座的动态表征；
-    #         - 设计 Coarse Action 等高效表征 CoT，提升模型推理能力；
-    #         - 搭建三系统方案 DiAct，为前期落地做准备。
-    #     - "**预研**：基于扩散模型 dLLM 的统一扩散基模；WAM 隐式表征及蒸馏探索。"
-    #   badges:
-    #     - RoboTwin2.0 Hard **94.3**
-    #     - LIBERO-Plus **91.8**
-    #     - RoboCase365 **43.5**
-    #     - 新机型 100h 后训练成功率 73% → **97%**
 
 - period: 2023.07 – 2024.10
   org: 百度 · IDG · Apollo
@@ -113,7 +103,7 @@
         - { src: img/loap-generalization.jpg, caption: 7 个真实场景泛化测试 }
 
     - title: 交互推演框架1.0
-      summary: "面向无保护左转、匝道汇入等强交互场景，搭建「自车语义候选轨迹采样 → 他车最优交互响应 → 舒适性 + 安全性 Cost 评估」的交互推演模型：按 Yield / Not Yield 语义并结合预推演生成自车候选轨迹，在 ST 图中求解每条候选下他车的最优交互轨迹，选出安全舒适、符合他车预期的最优解；透传 Normal / Warning / Danger 推演状态，与横向及后决策联动调整汇入点或切换 Fallback 轨迹。无保护左转线上 Bad Case 通过率由 77.1% 提升至 **90.8%**。"
+      summary: "面向无保护左转、匝道汇入等强交互场景，搭建交互推演模型：按语义并结合预推演生成自车候选轨迹，在 ST 图中求解每条候选下他车的最优交互轨迹，选出安全舒适、符合他车预期的最优解；透传 Normal / Warning / Danger 推演状态，与横向及后决策联动调整汇入点或切换 Fallback 轨迹。复杂博弈场景Fail集合通过率跃升至 **90.8%**。"
       media:
         - { src: img/ali-interaction-framework.png, caption: 交互推演模型框架, wide: true }
 
